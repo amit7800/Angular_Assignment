@@ -1,0 +1,58 @@
+<div class="container">
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+    <!-- <div class="form-group ">
+      <label for="exampleInputEmail1">Email address</label>
+      <input [(ngModel)]="user.email" name="email" type="email" class="form-control"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"><br /><br />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input [(ngModel)]="user.password" type="password" name="password" class="form-control"><br /><br />
+    </div> -->
+    <div class="form-group">
+      
+      <label class="form-label" for="form1Example13">Email address</label>
+      <input
+        type="email"
+        name="email"
+        ngModel
+        #email="ngModel"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        class="form-control form-control-lg"
+        required
+      />
+      <div *ngIf="email.touched">
+        <p class="error" *ngIf="email.errors?.['required']">
+          Email is required *
+        </p>
+        <p class="error" *ngIf="email.errors?.['pattern']">
+          Enter a valid email!!!
+        </p>
+      </div>
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form1Example23">Password</label>
+
+      <input
+        required
+        #password="ngModel"
+        [(ngModel)]="user.password"
+        type="password"
+        name="password"
+        class="form-control form-control-lg"
+        minlength="3"
+        maxlength="8"
+      />
+      <span class="error" *ngIf="password.invalid && password.touched"
+        >Password is required *</span
+      >
+    </div>
+  
+
+
+    <button type="submit" class="btn btn-primary"  [disabled]="loginForm.invalid">Submit</button>
+    <!-- <button class="btn btn-success" ng-click="success()">Submit</button> -->
+  </form>
+</div>

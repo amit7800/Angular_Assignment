@@ -1,0 +1,72 @@
+<div class="text-right mt-3 mr-3">
+  <button type="button" class="btn btn-info" (click)="openPopup()">
+    Update Profile</button>&nbsp;
+  <button class="btn btn-danger" (click)="handleLogout()">Logout</button>
+</div>
+<br /><br /><br /><br />
+<h2>
+ 
+  <b>
+    <h1 class="xyz">Welcome</h1>
+    <marquee width="60%" direction="left" height="100px"class="blink">
+      
+    {{ isLoggedIn.first_name + " " + isLoggedIn.last_name
+    }}
+  </marquee>
+  </b>
+  
+</h2>
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{ display: displayStyle }">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" id="cross" class="btn btn-warning" (click)="closePopup()" data-dismiss="modal">
+          <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="container-fluid">
+          <form #updateForm="ngForm">
+            <div class="row">
+              <div class="">
+                <label for="exampleInputName"> firstName</label>
+                <input required [(ngModel)]="user.first_name" name="first_name" type="text" class="form-control" />
+
+                <label for="exampleInputName"> lastName</label>
+                <input required [(ngModel)]="user.last_name" name="last_name" type="text" class="form-control" />
+
+                <label for="exampleInputName"> address Line1</label>
+                <input required [(ngModel)]="user.address.add_Line1" name="add_Line1" type="text"
+                  class="form-control" />
+
+
+                <label for="exampleInputName"> address Line 2</label>
+                <input required [(ngModel)]="user.address.add_Line2" name="add_Line2" type="text"
+                  class="form-control" />
+
+
+                <label for="exampleInputName"> state</label>
+                <input required [(ngModel)]="user.address.state" name="state" type="text" class="form-control" />
+
+
+                <label for="exampleInputName"> city</label>
+                <input required [(ngModel)]="user.address.city" name="city" type="text" class="form-control" />
+                <label for="exampleInputName"> Mobile no</label>
+                <input required [(ngModel)]="user.phone" name="phone" type="Number" class="form-control" />
+              </div>
+            </div>
+
+            <label for="exampleInputName"> Email</label>
+            <input required [(ngModel)]="user.email" name="email" type="text" class="form-control" readonly />
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" (click)="handleUpdate(updateForm.value)">
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

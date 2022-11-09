@@ -1,0 +1,20 @@
+
+
+  <h2>using Ng Switch</h2>
+
+  <select (change)="setvalue($event)">
+    <option value ="">--select--</option>
+    <option value ="one">One</option>
+    <option value ="two">Two</option>
+    <option value ="three">Three</option>
+    <option value ="another">Another</option>
+  </select>
+  <div [ngSwitch]="choose">
+    <h3 *ngSwitchCase="'one'">First</h3>
+    <h3 *ngSwitchCase="'two'">Second</h3>
+    <h3 *ngSwitchCase="'three'">Third</h3>
+    <h3 *ngSwitchDefault="">Default</h3>
+
+  </div>
+
+ 
